@@ -101,3 +101,60 @@ html[data-theme='dark'],
 html[data-theme='light'] {
   opacity: initial;
 }
+
+/* article start */
+
+.article-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-weight: 470;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transition: border-color 0.3s ease-in-out;
+  text-align: left;
+}
+
+.article-tag {
+  padding: 2.5px 8px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.4); /* This is still rgba */
+  color: white;
+  width: fit-content;
+  text-align: left;
+}
+
+.article-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(0, 0, 0, 0.9);
+  font-weight: bold;
+  text-align: left !important;
+}
+
+.article-desc {
+  display: none;
+  text-align: left !important;
+}
+
+@media (min-width: 768px) {
+  .article-desc {
+    display: block;
+    text-align: left !important;
+    color: rgba(0, 0, 0, 0.4);
+  }
+}
+
+.article-date {
+  color: rgba(0, 0, 0, 0.9);
+  text-align: right;
+}
+
+@media (min-width: 768px) {
+  .article-date {
+    text-align: left;
+  }
+}
+
+/* article end */

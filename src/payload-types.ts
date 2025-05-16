@@ -148,7 +148,7 @@ export interface UserAuthOperations {
 export interface Page {
   id: string;
   title: string;
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | ArticlesBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -686,6 +686,26 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ArticlesBlock".
+ */
+export interface ArticlesBlock {
+  articles: {
+    title: string;
+    batch: string;
+    services: {
+      service: string;
+      id?: string | null;
+    }[];
+    year: string;
+    url: string;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'articles';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -952,6 +972,7 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        articles?: T | ArticlesBlockSelect<T>;
       };
   meta?:
     | T
@@ -1048,6 +1069,29 @@ export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
   enableIntro?: T;
   introContent?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ArticlesBlock_select".
+ */
+export interface ArticlesBlockSelect<T extends boolean = true> {
+  articles?:
+    | T
+    | {
+        title?: T;
+        batch?: T;
+        services?:
+          | T
+          | {
+              service?: T;
+              id?: T;
+            };
+        year?: T;
+        url?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

@@ -55,7 +55,7 @@ export const Logo = (props: Props) => {
 
   return (
     <h6
-      className={clsx('text-[22px] text-white ', className)}
+      className={clsx('text-[22px] text-white dark:text-black', className)}
       style={{
         display: 'inline-block', // Ensures logo does not stretch
         width: '8em', // Fixed width (enough space for the longest string "PERMANENT")

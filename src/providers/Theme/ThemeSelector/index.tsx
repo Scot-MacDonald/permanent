@@ -1,51 +1,38 @@
 'use client'
 
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
-import React, { useState } from 'react'
-
-import type { Theme } from './types'
-
-import { useTheme } from '..'
-import { themeLocalStorageKey } from './types'
+import * as React from 'react'
+import { Sun, Moon } from 'lucide-react'
+import { Toggle } from '@radix-ui/react-toggle'
+import { cn } from '@/utilities/ui'
+import { Theme, themeLocalStorageKey, defaultTheme } from './types'
 
 export const ThemeSelector: React.FC = () => {
-  const { setTheme } = useTheme()
-  const [value, setValue] = useState('')
-
-  const onThemeChange = (themeToSet: Theme & 'auto') => {
-    if (themeToSet === 'auto') {
-      setTheme(null)
-      setValue('auto')
-    } else {
-      setTheme(themeToSet)
-      setValue(themeToSet)
-    }
-  }
+  const [theme, setTheme] = React.useState<Theme>(() => {
+    if (typeof window === 'undefined') return defaultTheme
+    return (localStorage.getItem(themeLocalStorageKey) as Theme) ?? defaultTheme
+  })
 
   React.useEffect(() => {
-    const preference = window.localStorage.getItem(themeLocalStorageKey)
-    setValue(preference ?? 'auto')
-  }, [])
+    document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem(themeLocalStorageKey, theme)
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))
+  }
 
   return (
-    <Select onValueChange={onThemeChange} value={value}>
-      <SelectTrigger
-        aria-label="Select a theme"
-        className="w-auto bg-transparent gap-2 pl-0 md:pl-3 border-none"
-      >
-        <SelectValue placeholder="Theme" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectItem value="auto">Auto</SelectItem>
-        <SelectItem value="light">Light</SelectItem>
-        <SelectItem value="dark">Dark</SelectItem>
-      </SelectContent>
-    </Select>
+    <Toggle
+      pressed={theme === 'dark'}
+      onPressedChange={toggleTheme}
+      className={cn(
+        'inline-flex h-10 w-10 items-center justify-center  text-foreground transition-colors hover: hover:text-accent-foreground ',
+      )}
+      aria-label="Toggle theme"
+    >
+      {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+    </Toggle>
   )
 }
+
+export default ThemeSelector

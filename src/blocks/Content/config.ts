@@ -31,6 +31,10 @@ const columnFields: Field[] = [
         label: 'Full',
         value: 'full',
       },
+      {
+        label: 'Max 640px',
+        value: 'max640',
+      },
     ],
   },
   {

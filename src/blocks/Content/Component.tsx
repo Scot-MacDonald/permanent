@@ -9,7 +9,7 @@ import { CMSLink } from '../../components/Link'
 export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
   const { columns } = props
 
-  const colsSpanClasses = {
+  const colsSpanClasses: Record<string, string> = {
     full: '12',
     half: '6',
     oneThird: '4',
@@ -17,7 +17,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
   }
 
   return (
-    <div className="container my-16">
+    <div className="w-full px-4 my-16">
       <div className="grid grid-cols-4 lg:grid-cols-12 gap-y-8 gap-x-16">
         {columns &&
           columns.length > 0 &&
@@ -26,9 +26,14 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
 
             return (
               <div
-                className={cn(`col-span-4 lg:col-span-${colsSpanClasses[size!]}`, {
-                  'md:col-span-2': size !== 'full',
-                })}
+                className={cn(
+                  size === 'max640'
+                    ? 'col-span-4 lg:col-span-12 max-w-[640px] w-full'
+                    : `col-span-4 lg:col-span-${colsSpanClasses[size!]}`,
+                  {
+                    'md:col-span-2': size !== 'full' && size !== 'max640',
+                  },
+                )}
                 key={index}
               >
                 {richText && <RichText data={richText} enableGutter={false} />}

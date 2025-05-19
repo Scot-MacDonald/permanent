@@ -17,14 +17,14 @@ export async function Footer() {
   return (
     <footer className="mt-auto dark:bg-card ">
       <div className="w-full p-5 gap-8 flex flex-col md:flex-row md:justify-between">
-        <Link className="flex items-center text-sm lg:w-[353px]" href="/">
+        <Link className="flex items-center text-sm" href="/">
           {/* <Logo /> */}
           ©2025 PERMANENT Services GmbH
         </Link>
         <Time />
         <div className="flex flex-col-reverse items-start md:flex-row gap-4 md:items-center">
           {/* <ThemeSelector /> */}
-          <nav className="flex flex-col md:flex-row gap-4 lg:w-[353px]">
+          <nav className="flex flex-col md:flex-row gap-4 ">
             {navItems.map(({ link }, i) => {
               return <CMSLink className="dark:bg-card  text-sm" key={i} {...link} />
             })}

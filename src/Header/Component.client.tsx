@@ -35,7 +35,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
       className="  z-20 sticky top-0 bg-accent/10 backdrop-blur-md  "
       {...(theme ? { 'data-theme': theme } : {})}
     >
-      <div className="p-4 flex justify-between">
+      <div className="p-4 flex justify-between items-center">
         <Link href="/">
           <Logo loading="eager" priority="high" className="invert dark:invert-1" />
         </Link>

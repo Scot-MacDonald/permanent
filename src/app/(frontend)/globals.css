@@ -12,6 +12,13 @@
     font-size: unset;
     font-weight: unset;
   }
+  p {
+    font-size: 1.4rem;
+    line-height: 28px;
+    font-weight: 400;
+    margin-top: 0em;
+    margin-bottom: 0em;
+  }
 
   :root {
     --background: 0 0% 100%;
@@ -293,3 +300,22 @@ h3 {
 }
 
 /* article end */
+
+/* LENIS SMOOTH-SCROLL */
+html.lenis html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+/* LENIS SMOOTH-SCROLL END */

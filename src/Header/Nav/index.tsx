@@ -38,10 +38,10 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
               <CMSLink {...link} appearance="link" className="block" />
             </div>
           ))}
-          <Link href="/search" className="flex items-center" onClick={handleLinkClick}>
+          {/* <Link href="/search" className="flex items-center" onClick={handleLinkClick}>
             <SearchIcon className="w-5 " />
             <span className="ml-2">Search</span>
-          </Link>
+          </Link> */}
         </SheetContent>
       </Sheet>
 
@@ -50,10 +50,10 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
         {navItems.map(({ link }, i) => (
           <CMSLink key={i} {...link} appearance="link" />
         ))}
-        <Link href="/search">
+        {/* <Link href="/search">
           <span className="sr-only">Search</span>
           <SearchIcon className="w-5 " />
-        </Link>
+        </Link> */}
       </div>
     </nav>
   )

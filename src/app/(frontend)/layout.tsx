@@ -17,6 +17,7 @@ import { ReactLenis } from '@/utilities/lenis'
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 import PageTransitionEffect from '@/components/PageTransition'
+import FadeOutEffect from '@/components/FadeOutEffect'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
@@ -36,7 +37,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               preview: isEnabled,
             }}
           /> */}
-
+            <FadeOutEffect />
             <Header />
             <PageTransitionEffect>{children}</PageTransitionEffect>
             <Footer />
